@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7fb">
+  <title>Апроксимація функцій — лабораторна робота</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page">
+    <div class="topline">Чисельні методи · інтерактивна модель</div>
+    <h1>Апроксимація функцій</h1>
+    <p class="intro">Порівняйте інтерполяційний поліном Лагранжа та метод найменших квадратів на одному наборі експериментальних даних.</p>
+
+    <section class="workspace" aria-label="Графік і налаштування апроксимації">
+      <aside class="panel" aria-label="Налаштування графіка">
+        <div class="control-group">
+          <p class="section-label">Параметри</p>
+          <label class="control-title" for="dataset">Кількість точок</label>
+          <select id="dataset">
+            <option value="5">5 точок · початкові</option>
+            <option value="10">10 точок · із шумом</option>
+            <option value="20">20 точок · із шумом</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <p class="section-label">Відображення</p>
+          <span class="control-title" id="view-label">Оберіть криві</span>
+          <div class="radio-list" role="radiogroup" aria-labelledby="view-label">
+            <div class="radio-option">
+              <input id="view-lagrange" name="view" type="radio" value="lagrange">
+              <label class="radio-label" for="view-lagrange">Інтерполяція Лагранжа</label>
+            </div>
+            <div class="radio-option">
+              <input id="view-ols" name="view" type="radio" value="ols">
+              <label class="radio-label" for="view-ols">МНК</label>
+            </div>
+            <div class="radio-option">
+              <input id="view-all" name="view" type="radio" value="all" checked>
+              <label class="radio-label" for="view-all">Усі разом</label>
+            </div>
+          </div>
+          <div class="legend" aria-label="Позначення">
+            <div class="legend-item"><span class="legend-mark"></span>Поліном Лагранжа</div>
+            <div class="legend-item"><span class="legend-mark ols"></span>Поліном МНК</div>
+            <div class="legend-item"><span class="legend-mark points"></span>Експериментальні точки</div>
+          </div>
+        </div>
+      </aside>
+
+      <section class="chart-card" aria-label="Графік апроксимації">
+        <header class="chart-header">
+          <div>
+            <h2 class="chart-title">Порівняння моделей</h2>
+            <div class="chart-subtitle" id="chart-subtitle">Експериментальні дані та апроксимувальні криві</div>
+          </div>
+          <label class="degree-control" for="degree">Степінь МНК
+            <select id="degree" aria-label="Степінь полінома МНК">
+              <option value="1">1</option>
+              <option value="2" selected>2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </label>
+        </header>
+        <div class="canvas-wrap">
+          <canvas id="chart" role="img" aria-label="Графік експериментальних точок, інтерполяції Лагранжа та апроксимації методом найменших квадратів"></canvas>
+        </div>
+        <div class="status" id="status" role="status" aria-live="polite"></div>
+      </section>
+    </section>
+    <div class="footnote">
+      <span>Для МНК показано вертикальні нев’язки між вимірюваннями та моделлю.</span>
+      <span>Криві та вузли з’являються з плавною анімацією.</span>
+    </div>
+  </main>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
